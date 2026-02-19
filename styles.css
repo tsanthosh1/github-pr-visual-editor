@@ -1,0 +1,88 @@
+/**
+ * GitHub PR Visual Editor Styles
+ * Makes Preview mode editable
+ */
+
+/* ===== Enhanced Preview ===== */
+.gh-ve-enhanced-preview {
+  /* No visual changes to the preview itself */
+}
+
+/* ===== Editable Elements ===== */
+.gh-ve-editable {
+  outline: none;
+  border-radius: 3px;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  cursor: text;
+}
+
+.gh-ve-editable:hover {
+  background-color: rgba(9, 105, 218, 0.05);
+}
+
+.gh-ve-editable:focus {
+  background-color: rgba(9, 105, 218, 0.08);
+  box-shadow: 0 0 0 2px rgba(9, 105, 218, 0.2);
+}
+
+[data-color-mode="dark"] .gh-ve-editable:hover,
+.dark .gh-ve-editable:hover {
+  background-color: rgba(56, 139, 253, 0.08);
+}
+
+[data-color-mode="dark"] .gh-ve-editable:focus,
+.dark .gh-ve-editable:focus {
+  background-color: rgba(56, 139, 253, 0.12);
+  box-shadow: 0 0 0 2px rgba(56, 139, 253, 0.25);
+}
+
+/* ===== Task List Checkboxes ===== */
+.gh-ve-enhanced-preview .task-list-item-checkbox {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.gh-ve-enhanced-preview .task-list-item-checkbox:hover {
+  transform: scale(1.1);
+  transition: transform 0.1s ease;
+}
+
+/* ===== Task Text ===== */
+.gh-ve-task-text {
+  display: inline;
+}
+
+/* ===== Empty State ===== */
+.gh-ve-editable:empty::before {
+  content: ' ';
+}
+
+/* ===== Preview Tab Indicator ===== */
+.gh-ve-tab-indicator {
+  font-size: 13px;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+/* ===== Edit Button in Comment Header ===== */
+.gh-ve-edit-btn {
+  margin-right: 4px;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.gh-ve-edit-btn:hover {
+  opacity: 1;
+}
+
+.timeline-comment:hover .gh-ve-edit-btn {
+  opacity: 0.8;
+}
+
+.gh-ve-edit-btn .octicon {
+  color: var(--fgColor-muted, var(--color-fg-muted));
+}
+
+.gh-ve-edit-btn:hover .octicon {
+  color: var(--fgColor-accent, var(--color-accent-fg));
+}

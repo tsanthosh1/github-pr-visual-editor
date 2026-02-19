@@ -1,0 +1,13 @@
+{
+  "name": "github-pr-visual-editor",
+  "version": "1.0.0",
+  "description": "Chrome extension that makes GitHub PR preview mode editable",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsanthosh1/github-pr-visual-editor.git"
+  },
+  "scripts": {
+    "generate-icons": "node create-icons.js"
+  }
+}
