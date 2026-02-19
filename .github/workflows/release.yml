@@ -11,6 +11,9 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: write
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -47,8 +50,6 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     if: success()
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout repository
@@ -78,13 +79,10 @@ jobs:
             -x "npm-debug.log"
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag }}
-          release_name: GitHub PR Visual Editor ${{ steps.version.outputs.tag }}
+          name: GitHub PR Visual Editor ${{ steps.version.outputs.tag }}
           body: |
             ## GitHub PR Visual Editor ${{ steps.version.outputs.tag }}
 
@@ -92,15 +90,4 @@ jobs:
             1. Download `github-pr-visual-editor.zip` below
             2. Unzip to a folder
             3. Open `chrome://extensions/` → Enable Developer Mode → Load Unpacked → Select the folder
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./github-pr-visual-editor.zip
-          asset_name: github-pr-visual-editor.zip
-          asset_content_type: application/zip
+          files: github-pr-visual-editor.zip
