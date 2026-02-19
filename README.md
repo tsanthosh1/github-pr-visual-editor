@@ -82,4 +82,3 @@ MIT License — feel free to use this in your own projects!
 
 ---
 
-Made with ❤️ for developers who review lots of PRs
